@@ -21,11 +21,12 @@ AndPush.prototype.send = function (apikeys, obj, cb) {
          var obj = {
              apikey: (Array.isArray(apikeys)?apikeys:[apikeys]).join(','),
              message: obj.message||"Hello from [b]AndPush[/b]!",
+             bbcode: ("bbcode" in obj),
              title: obj.title||"AndPush w/ Node.js",
              icon: (this.isURL(obj.icon)?obj.icon:false),
              url: (this.isURL(obj.url)?obj.url:false),
              urltitle: obj.urltitle||false,
-             alert: obj.alert||false,
+             alert: ("alert" in obj),
          };
          Object.keys(obj).filter(function(key){ return obj[key]; });
          this.sendRequest(url.parse(this.apipath+this.endpoints.send),qs.stringify(obj),cb||function(){});
