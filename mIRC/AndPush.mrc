@@ -43,8 +43,8 @@ alias -l flood_control {
 }
 alias -l sslCheck {
   if (!$sslready) {
-    .timer 1 0 $input(AndPush requires SSL. $crlf $+ Please update mIRC to v7.36 or later or $crlf $+ install the OpenSSL binaries. $crlf $+ This script will now unload.,ho,AndPush)
-    unload -rs $script
+    .timer 1 0 noop $input(AndPush requires SSL. $crlf $+ Please update mIRC to v7.36 or later or $crlf $+ install the OpenSSL binaries. $crlf $+ This script will now unload.,ho,AndPush)
+    .unload -rs $script
   }
 }
 on *:LOAD:{
